@@ -4,7 +4,10 @@ using System;
 
 public partial class PlayerTeste : Entity
 {
-	private PackedScene bullet = GD.Load<PackedScene>("res://bullet.tscn");
+	
+	[Export] 
+	private PackedScene bullet;
+	
 	
 	
 	
@@ -14,7 +17,7 @@ public partial class PlayerTeste : Entity
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 direction = Input.GetVector("left", "right", "up", "down");
 		if (direction != Vector2.Zero){

@@ -1,17 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://byeuhwpat5hq1"]
+[gd_scene load_steps=7 format=3 uid="uid://byeuhwpat5hq1"]
 
-[ext_resource type="Script" uid="uid://ciqohfwmo7sif" path="res://Scripts/PlayerTeste.cs" id="1_ybxfy"]
-[ext_resource type="Texture2D" uid="uid://dbd6i3mfbklou" path="res://Assets/icon.svg" id="2_gxa6g"]
+[ext_resource type="Script" uid="uid://ciqohfwmo7sif" path="res://Scripts/PlayerTeste.cs" id="1_iersn"]
+[ext_resource type="PackedScene" uid="uid://b060l540rvuyn" path="res://Cenas/bullet.tscn" id="2_5p0qj"]
+[ext_resource type="Texture2D" uid="uid://2r8thgx5pa1r" path="res://Assets/BypassSpritesheet1.0-20260527-154310-spritesheet (2).png" id="3_iersn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_ybxfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p0qj"]
+atlas = ExtResource("3_iersn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yuqgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0qj")
+}],
+"loop": true,
+"name": &"player",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_iersn")
+bullet = ExtResource("2_5p0qj")
 life = 3
 speed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ij6vw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gxa6g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yuqgu")
+animation = &"player"
