@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://byeuhwpat5hq1"]
+[gd_scene load_steps=8 format=3 uid="uid://byeuhwpat5hq1"]
 
 [ext_resource type="Script" uid="uid://ciqohfwmo7sif" path="res://Scripts/PlayerTeste.cs" id="1_iersn"]
 [ext_resource type="PackedScene" uid="uid://b060l540rvuyn" path="res://Cenas/bullet.tscn" id="2_5p0qj"]
@@ -21,6 +21,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
+
 [node name="player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_iersn")
@@ -34,3 +36,8 @@ shape = SubResource("RectangleShape2D_ij6vw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yuqgu")
 animation = &"player"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_iersn")

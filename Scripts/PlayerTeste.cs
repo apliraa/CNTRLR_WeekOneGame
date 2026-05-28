@@ -8,6 +8,8 @@ public partial class PlayerTeste : Entity
 	[Export] 
 	private PackedScene bullet;
 	
+	private bool shootCD = false;
+	private double fireRate = 0.25;
 	
 	
 	
@@ -17,7 +19,7 @@ public partial class PlayerTeste : Entity
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+	public override async void _PhysicsProcess(double delta)
 	{
 		Vector2 direction = Input.GetVector("left", "right", "up", "down");
 		if (direction != Vector2.Zero){
@@ -27,10 +29,20 @@ public partial class PlayerTeste : Entity
 		}
 		MoveAndSlide();
 		
-		if(Input.IsActionJustPressed("shoot")){
-			var newBullet = bullet.Instantiate<Node2D>();
+		if(Input.IsActionPressed("shoot")){
+			if(!shootCD){
+				shootCD = true;
+				var newBullet = bullet.Instantiate<Node2D>();
 				newBullet.GlobalPosition = GlobalPosition;
 				AddSibling(newBullet);
+				await ToSignal(GetTree().CreateTimer(fireRate), SceneTreeTimer.SignalName.Timeout);
+				shootCD = false;
+			
+				}
+				
+				if (life <= 0){	QueueFree();}
+				
+				
 		}
 		
 		
