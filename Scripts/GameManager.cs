@@ -6,13 +6,19 @@ public partial class GameManager : Node2D
 	
 	private Node2D playerSpawn;
 	private Node2D player;
+	[Export] private PackedScene enemyScene;
+	
+	//UI
 	private Label scoreLabel;
 	private int score = 0;
 	private TextureRect vida1;
 	private TextureRect vida2;
 	private TextureRect vida3;
 	private TextureRect vida4;
-	//private float dificuldade;
+	
+	//Spawner
+	private double timerSpawn = 0;
+	private double intervaloSpawn = 2;
 	
 	public override void _Ready()
 	{	
@@ -37,6 +43,12 @@ public partial class GameManager : Node2D
 			GetTree().ReloadCurrentScene();
 		}
 		
+		//timer do jogo
+		timerSpawn -= delta;
+		if (timerSpawn <= 0){
+			SpawnarInimigo();
+			timerSpawn = intervaloSpawn; 
+			}
 		//spawner
 		
 	}
@@ -52,6 +64,17 @@ public partial class GameManager : Node2D
 	vida2.Visible = vidaAtual >= 2;
 	vida3.Visible = vidaAtual >= 3;
 	vida4.Visible = vidaAtual >= 4;
+}
+
+private void SpawnarInimigo()
+{
+	var inimigo = enemyScene.Instantiate<Node2D>();
+	
+	float larguraTela = GetViewport().GetVisibleRect().Size.X;
+	float xAleatorio = (float)GD.RandRange(50, larguraTela - 50);
+	
+	inimigo.GlobalPosition = new Vector2(xAleatorio, -50);
+	AddChild(inimigo);
 }
 	
 }

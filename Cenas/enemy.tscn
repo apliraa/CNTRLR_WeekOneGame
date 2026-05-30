@@ -7,14 +7,14 @@
 size = Vector2(17.5, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rk41v"]
-size = Vector2(37, 34.5)
+size = Vector2(31, 28)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 0
 script = ExtResource("1_1ejt6")
 life = 1
-speed = 10.0
+speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
@@ -28,12 +28,11 @@ texture = ExtResource("1_pooe4")
 position = Vector2(-8, -104)
 rect = Rect2(-42, -10, 98, 20)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(4.5, -2.75)
 shape = SubResource("RectangleShape2D_rk41v")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

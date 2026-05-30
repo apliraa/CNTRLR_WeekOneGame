@@ -15,13 +15,13 @@ public partial class Bullet : Entity
 	{
 		Position += Vector2.Up * speed * (float)delta;
 		
-		if (life <= 0){	QueueFree();}
+		
 		
 	}
 	
 	private void OnHitboxBodyEntered(Node2D body)
 {
-	if (body is Entity entity)
+	if (body is Entity entity && body is Enemy)
 	{
 		entity.life -= 1;
 		QueueFree();

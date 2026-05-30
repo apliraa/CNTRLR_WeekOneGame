@@ -7,14 +7,11 @@
 
 [node name="Game" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_csek2")
+enemyScene = ExtResource("3_wm8yg")
 
 [node name="player" parent="." instance=ExtResource("2_wm8yg")]
 position = Vector2(159, 581)
 motion_mode = 1
-
-[node name="enemy" parent="." instance=ExtResource("3_wm8yg")]
-position = Vector2(164, 144)
-speed = 200.0
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(160, 580)
@@ -37,7 +34,6 @@ layout_mode = 2
 [node name="vida1" type="TextureRect" parent="UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_pn5db")
-expand_mode = 3
 
 [node name="vida2" type="TextureRect" parent="UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
