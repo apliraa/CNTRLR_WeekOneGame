@@ -25,6 +25,9 @@ public partial class Bullet : Entity
 	{
 		entity.life -= 1;
 		QueueFree();
+		
+		 var gm = GetTree().GetFirstNodeInGroup("GameManager") as GameManager;
+		gm?.AddScore();
 	}
 }
 	

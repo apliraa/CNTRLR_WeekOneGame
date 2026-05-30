@@ -12,7 +12,7 @@ public partial class Enemy : Entity
 
 	public override void _PhysicsProcess(double delta)
 	{
-		//Position += Vector2.Down * speed * (float)delta;
+		Position += Vector2.Down * speed * (float)delta;
 		
 	if (life <= 0){	QueueFree();}
 		
@@ -20,9 +20,15 @@ public partial class Enemy : Entity
 	
 	private void OnHitboxBodyEntered(Node2D body)
 {
-	if (body is Entity entity)
+	if (body is Entity entity && body is not Enemy)
 	{
 		entity.life -= 1;
+		
+		if (body is Player)
+		{
+			var gm = GetTree().GetFirstNodeInGroup("GameManager") as GameManager;
+			gm?.AtualizarVida(entity.life);
+		}
 		
 		
 	}

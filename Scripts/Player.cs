@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 
-public partial class PlayerTeste : Entity
+public partial class Player : Entity
 {
 	
 	[Export] 

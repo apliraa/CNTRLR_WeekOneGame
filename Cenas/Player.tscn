@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://byeuhwpat5hq1"]
 
-[ext_resource type="Script" uid="uid://ciqohfwmo7sif" path="res://Scripts/PlayerTeste.cs" id="1_iersn"]
+[ext_resource type="Script" uid="uid://ciqohfwmo7sif" path="res://Scripts/Player.cs" id="1_iersn"]
 [ext_resource type="PackedScene" uid="uid://b060l540rvuyn" path="res://Cenas/bullet.tscn" id="2_5p0qj"]
 [ext_resource type="Texture2D" uid="uid://2r8thgx5pa1r" path="res://Assets/BypassSpritesheet1.0-20260527-154310-spritesheet (2).png" id="3_iersn"]
 
@@ -23,7 +23,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_iersn")
 bullet = ExtResource("2_5p0qj")
