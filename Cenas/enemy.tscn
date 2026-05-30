@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://depxnmg0d0wje"]
+[gd_scene load_steps=5 format=3 uid="uid://depxnmg0d0wje"]
 
 [ext_resource type="Script" uid="uid://dgmtehmyrtxu5" path="res://Cenas/Enemy.cs" id="1_1ejt6"]
 [ext_resource type="Texture2D" uid="uid://dbd6i3mfbklou" path="res://Assets/icon.svg" id="1_pooe4"]
@@ -6,10 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ejt6"]
 size = Vector2(113, 111)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk41v"]
+
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_1ejt6")
+life = 2
 speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,3 +30,4 @@ rect = Rect2(-42, -10, 98, 20)
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_rk41v")
