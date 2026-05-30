@@ -25,18 +25,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_exnds")
 }],
 "loop": true,
-"name": &"default",
+"name": &"bullet",
 "speed": 3.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e5xkf"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exnds"]
+radius = 6.0
+height = 26.0
 
 [node name="bullet" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_e5xkf")
-life = 10
-speed = 800.0
+life = 1
+speed = 700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_e5xkf")
@@ -45,16 +47,18 @@ shape = SubResource("CapsuleShape2D_e5xkf")
 position = Vector2(-1, 20)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rc3ey")
-frame_progress = 0.8301285
-speed_scale = 0.5
+animation = &"bullet"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(14, 37)
 rect = Rect2(-31, -17, 34, 11)
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_e5xkf")
+shape = SubResource("CapsuleShape2D_exnds")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

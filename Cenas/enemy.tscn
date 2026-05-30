@@ -4,19 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://dbd6i3mfbklou" path="res://Assets/icon.svg" id="1_pooe4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ejt6"]
-size = Vector2(113, 111)
+size = Vector2(17.5, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rk41v"]
+size = Vector2(37, 34.5)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_1ejt6")
-life = 2
-speed = 300.0
+life = 1
+speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 1.5)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_1ejt6")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
@@ -28,6 +29,11 @@ position = Vector2(-8, -104)
 rect = Rect2(-42, -10, 98, 20)
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(4.5, -2.75)
 shape = SubResource("RectangleShape2D_rk41v")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdosim7eh72o"]
+[gd_scene load_steps=5 format=3 uid="uid://cdosim7eh72o"]
 
 [ext_resource type="Script" uid="uid://bajy0qjfbqr5p" path="res://Scripts/GameManager.cs" id="1_csek2"]
 [ext_resource type="PackedScene" uid="uid://byeuhwpat5hq1" path="res://Cenas/player.tscn" id="2_wm8yg"]
 [ext_resource type="PackedScene" uid="uid://depxnmg0d0wje" path="res://Cenas/enemy.tscn" id="3_wm8yg"]
+[ext_resource type="Texture2D" uid="uid://4ahboqlnudb4" path="res://Assets/BypassLifeBar-20260530-130334-frame0.png" id="4_pn5db"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_csek2")
@@ -17,3 +18,36 @@ speed = 200.0
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(160, 580)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.053000003
+anchor_top = 0.024
+anchor_right = 0.053000003
+anchor_bottom = 0.024
+offset_left = 3.039999
+offset_top = 3.6399994
+offset_right = 136.04
+offset_bottom = 64.64
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Score"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_pn5db")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_pn5db")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_pn5db")
