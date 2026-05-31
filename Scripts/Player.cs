@@ -22,6 +22,14 @@ public partial class Player : Entity
 		}
 		MoveAndSlide();
 		
+		//limites da tela
+		Vector2 tamanhoTela = GetViewport().GetVisibleRect().Size;
+		float margem = 20f;
+
+		Position = new Vector2(
+		Mathf.Clamp(Position.X, margem, tamanhoTela.X - margem),
+		Mathf.Clamp(Position.Y, margem, tamanhoTela.Y - margem) );
+		
 		if(Input.IsActionPressed("shoot")){
 			if(!shootCD){
 				shootCD = true;
