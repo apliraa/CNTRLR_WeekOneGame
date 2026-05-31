@@ -16,9 +16,20 @@ public partial class GameManager : Node2D
 	private TextureRect vida3;
 	private TextureRect vida4;
 	
+	//Dificuldade
+	private double tempoJogo = 0;
+	private float dificuldade = 1f;
+	
+	//Limitadores
+	private const double intervaloMin = 0.4;
+	private const int quantidadeMax = 5;
+	private const float velocidadeMax = 300f;
+	private const float velocidadeBase = 100f;
+	
 	//Spawner
 	private double timerSpawn = 0;
 	private double intervaloSpawn = 2;
+	private int quantidadeSpawn = 1;
 	
 	public override void _Ready()
 	{	
@@ -43,18 +54,22 @@ public partial class GameManager : Node2D
 			GetTree().ReloadCurrentScene();
 		}
 		
+		//progressao de dificuldade
+		 tempoJogo += delta;
+		AtualizarDificuldade();
+		
 		//timer do jogo
 		timerSpawn -= delta;
 		if (timerSpawn <= 0){
 			SpawnarInimigo();
 			timerSpawn = intervaloSpawn; 
 			}
-		//spawner
+		
 		
 	}
 	
 	public void AddScore(){
-		score += (int)(10);
+		score += (int)(10*dificuldade);
 		scoreLabel.Text = "Score: " + score;
 	}
 	
@@ -68,13 +83,31 @@ public partial class GameManager : Node2D
 
 private void SpawnarInimigo()
 {
-	var inimigo = enemyScene.Instantiate<Node2D>();
+	 for (int i = 0; i < quantidadeSpawn; i++)
+	{
+	var enemy = enemyScene.Instantiate<Entity>();
 	
 	float larguraTela = GetViewport().GetVisibleRect().Size.X;
 	float xAleatorio = (float)GD.RandRange(50, larguraTela - 50);
 	
-	inimigo.GlobalPosition = new Vector2(xAleatorio, -50);
-	AddChild(inimigo);
+	enemy.GlobalPosition = new Vector2(xAleatorio, -50);
+	enemy.speed = Math.Min(velocidadeMax, velocidadeBase + (dificuldade - 1f) * 50f);
+
+	AddChild(enemy);
+	}
+}
+
+private void AtualizarDificuldade()
+{
+	//aumenta dificuldade a cada 10s
+	double nivel = Math.Floor(tempoJogo / 10);
+	dificuldade = 1f + (float)nivel * 0.5f;
+
+	//aumenta a frequencia de spawns
+	intervaloSpawn = Math.Max(intervaloMin, 2.0 - nivel * 0.2);
+
+	//aumenta quantidade de inimigos por spawn
+	quantidadeSpawn = Math.Min(quantidadeMax, 1 + (int)(nivel / 2));
 }
 	
 }
