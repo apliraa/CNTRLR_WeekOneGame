@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://olafs4m2dkar"]
+
+[ext_resource type="Script" uid="uid://udyq58uojgc" path="res://Scripts/GameOver.cs" id="1_qaqi1"]
+
+[node name="GameOverTela" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qaqi1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 634.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"

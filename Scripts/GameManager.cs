@@ -45,14 +45,13 @@ public partial class GameManager : Node2D
    		 AtualizarVida(playerEntity.life);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if(Input.IsActionJustPressed("quit")){
 			GetTree().Quit();
-		}else if( Input.IsActionJustPressed("reset")){
-			GetTree().ReloadCurrentScene();
 		}
+		//else if( Input.IsActionJustPressed("reset")){	GetTree().ReloadCurrentScene();}
+
 		
 		//progressao de dificuldade
 		 tempoJogo += delta;

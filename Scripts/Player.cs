@@ -33,7 +33,10 @@ public partial class Player : Entity
 			}
 		}
 		
-		if (life <= 0){ QueueFree(); }
+		if (life <= 0){ 
+			GetTree().ChangeSceneToFile("res://Cenas/game_over_tela.tscn");
+			}
+
 		
 	}
 }
