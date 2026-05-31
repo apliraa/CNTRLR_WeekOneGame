@@ -28,12 +28,14 @@ public partial class Player : Entity
 				var newBullet = bullet.Instantiate<Node2D>();
 				newBullet.GlobalPosition = GlobalPosition;
 				AddSibling(newBullet);
+				GetNode<AudioStreamPlayer2D>("shootSound").Play();
 				await ToSignal(GetTree().CreateTimer(fireRate), SceneTreeTimer.SignalName.Timeout);
 				shootCD = false;
 			}
 		}
 		
 		if (life <= 0){ 
+			
 			GetTree().ChangeSceneToFile("res://Cenas/game_over_tela.tscn");
 			}
 

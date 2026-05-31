@@ -12,11 +12,13 @@ public partial class MenuInicial : Control
 	
 	private void OnPlayPressed()
 	{
+		
 		GetTree().ChangeSceneToFile("res://Cenas/game.tscn"); 
 	}
 	
 	private void OnQuitPressed()
 	{
+		GetNode<AudioStreamPlayer2D>("buttonSelection").Play();
 		GetTree().Quit();
 	}
 

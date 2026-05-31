@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://csf5avb8yx18q"
+path="res://.godot/imported/Explosion3 - MenuInicial.wav-904b09781fd9dbd3d2e4b7b54d3ca366.sample"
+
+[deps]
+
+source_file="res://SFX/Explosion3 - MenuInicial.wav"
+dest_files=["res://.godot/imported/Explosion3 - MenuInicial.wav-904b09781fd9dbd3d2e4b7b54d3ca366.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

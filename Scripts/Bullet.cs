@@ -23,11 +23,15 @@ public partial class Bullet : Entity
 {
 	if (body is Entity entity && body is Enemy)
 	{
+		
 		entity.life -= 1;
-		QueueFree();
+		
 		
 		 var gm = GetTree().GetFirstNodeInGroup("GameManager") as GameManager;
+		 gm?.EnemyDieSound();
 		gm?.AddScore();
+		
+		QueueFree();
 	}
 }
 	

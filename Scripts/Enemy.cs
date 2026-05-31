@@ -11,7 +11,8 @@ public partial class Enemy : Entity
 	{
 		Position += Vector2.Down * speed * (float)delta;
 		
-		if (life <= 0){ QueueFree(); }
+		if (life <= 0){ 
+			QueueFree(); }
 	}
 	
 	private void OnHitboxBodyEntered(Node2D body)

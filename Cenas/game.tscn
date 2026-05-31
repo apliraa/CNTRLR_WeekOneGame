@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdosim7eh72o"]
+[gd_scene load_steps=8 format=3 uid="uid://cdosim7eh72o"]
 
 [ext_resource type="Script" uid="uid://bajy0qjfbqr5p" path="res://Scripts/GameManager.cs" id="1_csek2"]
 [ext_resource type="PackedScene" uid="uid://byeuhwpat5hq1" path="res://Cenas/player.tscn" id="2_wm8yg"]
 [ext_resource type="PackedScene" uid="uid://depxnmg0d0wje" path="res://Cenas/enemy.tscn" id="3_wm8yg"]
 [ext_resource type="Texture2D" uid="uid://4ahboqlnudb4" path="res://Assets/BypassLifeBar-20260530-130334-frame0.png" id="4_pn5db"]
+[ext_resource type="AudioStream" uid="uid://g2py6oavf21g" path="res://SFX/Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background - Free Music (youtube).mp3" id="5_0ft7o"]
+[ext_resource type="AudioStream" uid="uid://fjrckkqaxf76" path="res://SFX/Hit_Hurt2.wav" id="6_xqjki"]
+[ext_resource type="AudioStream" uid="uid://ch8dqikilbdta" path="res://SFX/Randomize6 - Enemy Explosion.wav" id="7_ihbji"]
 
 [node name="Game" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_csek2")
@@ -46,3 +49,13 @@ texture = ExtResource("4_pn5db")
 [node name="vida4" type="TextureRect" parent="UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_pn5db")
+
+[node name="gameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0ft7o")
+autoplay = true
+
+[node name="playerHurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xqjki")
+
+[node name="enemyDieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ihbji")

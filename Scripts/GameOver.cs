@@ -12,11 +12,13 @@ public partial class GameOver : Control
 	
 	private void OnRestartPressed()
 	{
+		GetNode<AudioStreamPlayer2D>("buttonSelection").Play();
 		GetTree().ChangeSceneToFile("res://Cenas/game.tscn");
 	}
 	
 	 private void OnQuitPressed()
 	{
+		GetNode<AudioStreamPlayer2D>("buttonSelection").Play();
 		GetTree().Quit();
 	}
 

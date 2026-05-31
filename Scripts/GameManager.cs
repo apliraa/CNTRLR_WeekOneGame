@@ -74,6 +74,7 @@ public partial class GameManager : Node2D
 	
 	public void AtualizarVida(int vidaAtual)
 {
+	GetNode<AudioStreamPlayer2D>("playerHurtSound").Play();
 	vida1.Visible = vidaAtual >= 1;
 	vida2.Visible = vidaAtual >= 2;
 	vida3.Visible = vidaAtual >= 3;
@@ -107,6 +108,11 @@ private void AtualizarDificuldade()
 
 	//aumenta quantidade de inimigos por spawn
 	quantidadeSpawn = Math.Min(quantidadeMax, 1 + (int)(nivel / 2));
+}
+
+public void EnemyDieSound()
+{
+	GetNode<AudioStreamPlayer2D>("enemyDieSound").Play();
 }
 	
 }

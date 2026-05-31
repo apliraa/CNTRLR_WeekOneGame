@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b704m0t443vyl"]
+[gd_scene load_steps=4 format=3 uid="uid://b704m0t443vyl"]
 
 [ext_resource type="Script" uid="uid://dr642ti1flahj" path="res://Scripts/MenuInicial.cs" id="1_4ahfv"]
+[ext_resource type="AudioStream" uid="uid://c8lig2dvx2x4v" path="res://SFX/Pickup_Coin5 - SelectSound.wav" id="2_qdvqo"]
+[ext_resource type="AudioStream" uid="uid://csf5avb8yx18q" path="res://SFX/Explosion3 - MenuInicial.wav" id="3_21lpp"]
 
 [node name="MenuInicial" type="Control"]
 layout_mode = 3
@@ -15,10 +17,12 @@ offset_left = 1.0
 offset_top = 12.0
 offset_right = 319.0
 offset_bottom = 639.0
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.7607843, 0.039215688, 1)
 text = "Bypass"
 horizontal_alignment = 1
 
@@ -29,3 +33,10 @@ text = "Play"
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="buttonSelection" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qdvqo")
+
+[node name="gameStartSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_21lpp")
+autoplay = true
